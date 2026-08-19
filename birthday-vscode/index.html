@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A premium interactive birthday surprise website." />
+    <title>A Special Birthday Surprise</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <canvas id="fireworksCanvas" aria-hidden="true"></canvas>
+
+    <div class="loading-screen" id="loadingScreen">
+      <i class="fa-solid fa-cake-candles"></i>
+      <span>Preparing magic...</span>
+    </div>
+
+    <main class="birthday-site" id="birthdaySite">
+      <section class="lock-screen" id="lockScreen">
+        <div class="lock-aurora"></div>
+        <form class="lock-card" id="passwordForm">
+          <div class="lock-icon" id="lockIcon">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+          <h1>🎂 A Special Surprise Awaits...</h1>
+          <p>Enter the secret password.</p>
+          <input id="passwordInput" type="password" placeholder="Magic word" autocomplete="off" />
+          <button type="submit">Unlock Surprise</button>
+          <span class="lock-error" id="lockError"></span>
+        </form>
+      </section>
+
+      <div class="experience hidden" id="experience">
+        <div class="decor-layer" aria-hidden="true" id="decorLayer"></div>
+
+        <button class="floating-control music-control" id="musicToggle" aria-label="Toggle music">
+          <i class="fa-solid fa-volume-xmark"></i>
+        </button>
+        <button class="floating-control theme-control" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="secret-heart" id="secretHeart" aria-label="Secret heart">♥</button>
+
+        <section class="hero-section">
+          <div class="hero-media">
+            <img id="heroImage" src="" alt="Birthday cake and candles" />
+          </div>
+          <div class="hero-copy">
+            <p class="eyebrow"><i class="fa-solid fa-wand-magic-sparkles"></i> A little universe, made with love</p>
+            <h2>
+              Happy Birthday,
+              <span id="sisterName">Sister ❤️</span>
+            </h2>
+            <p class="hero-type"><span id="heroTypewriter"></span></p>
+            <a class="primary-button" href="#countdown">Open the memories</a>
+          </div>
+        </section>
+
+        <section class="section countdown-section" id="countdown">
+          <p class="eyebrow">Living light</p>
+          <h2>You&apos;ve been making the world brighter for...</h2>
+          <div class="countdown-grid" id="countdownGrid"></div>
+        </section>
+
+        <section class="section" id="timeline">
+          <p class="eyebrow">Memory lane</p>
+          <h2>Little chapters that made us us.</h2>
+          <div class="timeline-list" id="timelineList"></div>
+        </section>
+
+        <section class="section" id="gallery">
+          <p class="eyebrow">Gallery</p>
+          <h2>Replace these with your favorite photos.</h2>
+          <div class="gallery-grid" id="galleryGrid"></div>
+        </section>
+
+        <section class="section letter-section" id="letter">
+          <p class="eyebrow">A letter</p>
+          <h2>Something from the heart.</h2>
+          <button class="envelope" id="envelope" aria-label="Open birthday letter">
+            <span class="envelope-flap"></span>
+            <span class="envelope-body"><i class="fa-solid fa-heart"></i></span>
+          </button>
+          <article class="letter-paper glass hidden" id="letterPaper"></article>
+        </section>
+
+        <section class="section" id="reasons">
+          <p class="eyebrow">Reasons</p>
+          <h2>Why you&apos;re amazing.</h2>
+          <div class="reason-grid" id="reasonGrid"></div>
+        </section>
+
+        <section class="section quiz-section" id="quiz">
+          <p class="eyebrow">Memory quiz</p>
+          <h2>A tiny test of iconic history.</h2>
+          <div class="quiz-list" id="quizList"></div>
+        </section>
+
+        <section class="section wheel-section" id="wheelSection">
+          <p class="eyebrow">Spin the wheel</p>
+          <h2>Birthday destiny decides.</h2>
+          <div class="wheel-wrap">
+            <div class="wheel-pointer">▼</div>
+            <div class="wheel" id="wheel"></div>
+          </div>
+          <button class="primary-button" id="spinButton">Spin</button>
+          <p class="wheel-result" id="wheelResult"></p>
+        </section>
+
+        <section class="section wishes-section" id="wishes">
+          <p class="eyebrow">Wishes wall</p>
+          <h2>Leave a little birthday wish.</h2>
+          <form class="wish-form" id="wishForm">
+            <input id="wishInput" placeholder="Write something sweet..." />
+            <button type="submit">Add Wish</button>
+          </form>
+          <div class="wishes-grid" id="wishesGrid"></div>
+        </section>
+
+        <section class="section cake-section" id="cake">
+          <p class="eyebrow">Virtual cake</p>
+          <h2>Tap the candles.</h2>
+          <button class="cake-stage" id="cakeStage" aria-label="Blow out candles">
+            <span class="cake-plate"></span>
+            <span class="cake-base"></span>
+            <span class="cake-icing"></span>
+            <span class="candle candle-1"><span class="flame"></span><span class="smoke"></span></span>
+            <span class="candle candle-2"><span class="flame"></span><span class="smoke"></span></span>
+            <span class="candle candle-3"><span class="flame"></span><span class="smoke"></span></span>
+            <span class="candle candle-4"><span class="flame"></span><span class="smoke"></span></span>
+            <span class="candle candle-5"><span class="flame"></span><span class="smoke"></span></span>
+          </button>
+          <p class="wish-message hidden" id="wishMessage">Make a Wish ❤️</p>
+        </section>
+
+        <section class="section gift-section" id="gifts">
+          <p class="eyebrow">Gifts</p>
+          <h2>Choose a tiny surprise.</h2>
+          <div class="gift-grid" id="giftGrid"></div>
+          <p class="surprise-message glass hidden" id="surpriseMessage"></p>
+          <div class="love-meter glass">
+            <div class="love-circle"><span>100%</span></div>
+            <div>
+              <h3>Love Level</h3>
+              <p>Continuously rising. Officially immeasurable.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section final-section" id="final">
+          <p class="eyebrow">Finale</p>
+          <h2>One last shower of magic.</h2>
+          <button class="celebrate-button" id="celebrateButton">
+            <i class="fa-solid fa-party-horn"></i>
+            Celebrate!
+          </button>
+        </section>
+      </div>
+    </main>
+
+    <div class="lightbox hidden" id="lightbox">
+      <img id="lightboxImage" src="" alt="Selected memory" />
+    </div>
+
+    <div class="bonus-modal hidden" id="bonusModal">
+      <div class="bonus-card glass">
+        <i class="fa-solid fa-sparkles"></i>
+        <h2>Bonus Surprise</h2>
+        <p>You found the hidden heart. That means one extra hug, one extra dessert, and unlimited birthday privileges.</p>
+      </div>
+    </div>
+
+    <div class="celebration-overlay hidden" id="celebrationOverlay">
+      <h2>Happy Birthday ❤️</h2>
+      <p>May your dreams come true. Keep smiling forever.</p>
+      <span>Made with endless love.</span>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
